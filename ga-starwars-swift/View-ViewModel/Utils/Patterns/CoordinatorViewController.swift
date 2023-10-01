@@ -9,7 +9,8 @@ import Foundation
 
 // MARK: - CoordinatorViewController Type
 
-protocol CoordinatorViewController {
+protocol CoordinatorViewController: ViewControllerLifecycleBehaviour,
+                                    ViewControllerObservable {
     
     associatedtype ViewModelType: CoordinatorViewModel
     

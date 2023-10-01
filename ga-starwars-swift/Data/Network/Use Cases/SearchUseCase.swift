@@ -26,6 +26,7 @@ extension SearchUseCase {
     
     enum Endpoints {
         case fetch
+        case search
     }
 }
 
@@ -40,7 +41,7 @@ extension SearchUseCase {
                  completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
         switch endpoint {
-        case .fetch:
+        case .fetch, .search:
             return repository.request(endpoint: endpoint,
                                       request: request,
                                       cached: cached,

@@ -37,7 +37,7 @@ extension CollectionViewCell {
         
         switch (cell, controllerViewModel) {
         case (let cell as SearchCollectionViewCell, let controllerViewModel as SearchViewModel):
-            let item = controllerViewModel.characters[indexPath.row]
+            let item = controllerViewModel.characters.value[indexPath.row]
             
             cell.indexPath = indexPath
             cell.viewModel = SearchCollectionViewCellViewModel(with: item)

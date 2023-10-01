@@ -37,11 +37,12 @@ extension SearchRepository {
                  cached: ((HTTPCharacterDTO.Response?) -> Void)?,
                  completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
+        let sessionTask = URLSessionTask()
+        
+        guard !sessionTask.isCancelled else { return nil }
+        
         switch endpoint {
         case .fetch:
-            let sessionTask = URLSessionTask()
-            
-            guard !sessionTask.isCancelled else { return nil }
             
             let endpoint = SearchRepository.fetch(with: request)
             
@@ -49,8 +50,16 @@ extension SearchRepository {
                 endpoint: endpoint,
                 completion: completion)
             
-            return sessionTask
+        case .search:
+            
+            let endpoint = SearchRepository.search(with: request)
+            
+            sessionTask.task = dataTransferService.request(
+                endpoint: endpoint,
+                completion: completion)
         }
+        
+        return sessionTask
     }
 }
 
@@ -59,10 +68,19 @@ extension SearchRepository {
 extension SearchRepository {
     
     static func fetch(with request: HTTPCharacterDTO.Request) -> Endpoint {
-        let page = request.page
+        let page = request.page ?? 1
         let path = "people"
         let queryParams: [String: Any] = ["page": page]
         
         return Endpoint(method: .get, path: path, queryParameters: queryParams)
     }
+    
+    static func search(with request: HTTPCharacterDTO.Request) -> Endpoint {
+        let query = request.query ?? ""
+        let path = "people"
+        let queryParams: [String: Any] = ["search": query]
+        
+        return Endpoint(method: .get, path: path, queryParameters: queryParams)
+    }
 }
+

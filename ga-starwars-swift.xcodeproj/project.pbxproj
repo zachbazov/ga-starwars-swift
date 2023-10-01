@@ -53,6 +53,9 @@
 		8B9E5F292AC9C3EB003FDC04 /* CollectionViewCell+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F282AC9C3EB003FDC04 /* CollectionViewCell+Animation.swift */; };
 		8B9E5F2B2AC9D010003FDC04 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F2A2AC9D010003FDC04 /* ViewModel.swift */; };
 		8B9E5F2E2AC9D289003FDC04 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F2D2AC9D289003FDC04 /* Observable.swift */; };
+		8B9E5F322ACA04F7003FDC04 /* ViewControllerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F312ACA04F7003FDC04 /* ViewControllerObservable.swift */; };
+		8B9E5F342ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F332ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift */; };
+		8B9E5F362ACA05CD003FDC04 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F352ACA05CD003FDC04 /* Searchable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +106,9 @@
 		8B9E5F282AC9C3EB003FDC04 /* CollectionViewCell+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Animation.swift"; sourceTree = "<group>"; };
 		8B9E5F2A2AC9D010003FDC04 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		8B9E5F2D2AC9D289003FDC04 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		8B9E5F312ACA04F7003FDC04 /* ViewControllerObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerObservable.swift; sourceTree = "<group>"; };
+		8B9E5F332ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLifecycleBehaviour.swift; sourceTree = "<group>"; };
+		8B9E5F352ACA05CD003FDC04 /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +273,9 @@
 				8B9E5ED12AC98E01003FDC04 /* Reusable.swift */,
 				8B9E5EF22AC99453003FDC04 /* CollectionViewCell.swift */,
 				8B9E5EF42AC99545003FDC04 /* ViewInstantiable.swift */,
+				8B9E5F312ACA04F7003FDC04 /* ViewControllerObservable.swift */,
+				8B9E5F332ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift */,
+				8B9E5F352ACA05CD003FDC04 /* Searchable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -537,12 +546,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9E5EC52AC98CDF003FDC04 /* Coordinator.swift in Sources */,
+				8B9E5F342ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift in Sources */,
 				8B9E5ECF2AC98DDC003FDC04 /* UIViewController+Reusable.swift in Sources */,
 				8B9E5EBE2AC98920003FDC04 /* SearchViewModel.swift in Sources */,
 				8B9E5F0C2AC99F1F003FDC04 /* URLRequestConfiguration.swift in Sources */,
 				8B9E5EC02AC98925003FDC04 /* SearchViewController.swift in Sources */,
 				8B9E5EF12AC99282003FDC04 /* Char.swift in Sources */,
 				8B9E5F242AC9A163003FDC04 /* SearchRepository.swift in Sources */,
+				8B9E5F322ACA04F7003FDC04 /* ViewControllerObservable.swift in Sources */,
 				8B9E5EC72AC98CE5003FDC04 /* CoordinatorViewModel.swift in Sources */,
 				8B9E5ED62AC98EC0003FDC04 /* SearchCollectionViewDataSource.swift in Sources */,
 				8B9E5F182AC99F8B003FDC04 /* DataTransferErrorResolver.swift in Sources */,
@@ -567,6 +578,7 @@
 				8B9E5EF72AC99A0B003FDC04 /* CollectionViewLayout.swift in Sources */,
 				8B9E5F222AC9A10F003FDC04 /* UseCase.swift in Sources */,
 				8B9E5EB72AC988C9003FDC04 /* AppCoordinator.swift in Sources */,
+				8B9E5F362ACA05CD003FDC04 /* Searchable.swift in Sources */,
 				8B9E5F2B2AC9D010003FDC04 /* ViewModel.swift in Sources */,
 				8B9E5E9B2AC986CE003FDC04 /* AppDelegate.swift in Sources */,
 				8B9E5EF32AC99453003FDC04 /* CollectionViewCell.swift in Sources */,

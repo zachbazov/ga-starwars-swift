@@ -12,12 +12,13 @@ import Foundation
 struct HTTPCharacterDTO {
     
     struct Request: Decodable {
-        let page: Int
+        var page: Int?
+        var query: String?
     }
     
     struct Response: Decodable {
         let count: Int
-        let next: String
+        var next: String?
         var previous: String?
         let results: [CharacterDTO]
     }

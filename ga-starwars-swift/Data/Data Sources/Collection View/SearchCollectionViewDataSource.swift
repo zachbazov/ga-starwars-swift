@@ -33,7 +33,7 @@ final class SearchCollectionViewDataSource: CollectionViewDataSource {
     }
     
     override func numberOfItems(in section: Int) -> Int {
-        return viewModel.characters.count
+        return viewModel.characters.value.count
     }
     
     override func cellForItemAt<T>(in collectionView: UICollectionView, at indexPath: IndexPath) -> T where T : UICollectionViewCell {
@@ -46,7 +46,7 @@ final class SearchCollectionViewDataSource: CollectionViewDataSource {
         
         if let favoriteCharacter = viewModel.favoriteCharacter {
             
-            let char = viewModel.characters[indexPath.row]
+            let char = viewModel.characters.value[indexPath.row]
             cell.isFavorite = char == favoriteCharacter
         } else {
             cell.isFavorite = false
@@ -56,7 +56,7 @@ final class SearchCollectionViewDataSource: CollectionViewDataSource {
     }
     
     override func didSelectItem(in collectionView: UICollectionView, at indexPath: IndexPath) {
-        let selectedCharacter = viewModel.characters[indexPath.row]
+        let selectedCharacter = viewModel.characters.value[indexPath.row]
         
         viewModel.favoriteCharacter = selectedCharacter
         
@@ -127,7 +127,9 @@ extension SearchCollectionViewDataSource {
             viewModel.fetchCharacters(with: request) { [weak self] response in
                 guard let self = self else { return }
                 
-                self.viewModel.characters = response.results.map { $0.toDomain() }
+                let results = response.results.map { $0.toDomain() }
+                self.viewModel.currentResults = results
+                self.viewModel.characters.value = results
                 /// Yes, we could append the results to the `characters` array,
                 /// I chose not to due to memory inefficiency.
                 
@@ -142,7 +144,7 @@ extension SearchCollectionViewDataSource {
     private func sortCharactersByHeight() {
         guard let controller = self.viewModel.coordinator?.viewController else { return }
         
-        viewModel.characters.sort { return $0.height < $1.height }
+        viewModel.characters.value.sort { return $0.height < $1.height }
         
         controller.dataSource?.dataSourceDidChange()
     }
