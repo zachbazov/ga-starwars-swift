@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import URLDataTransfer
 
 // MARK: - Application Type
 

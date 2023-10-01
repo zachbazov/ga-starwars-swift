@@ -49,6 +49,34 @@ extension SearchRepository {
         
         return sessionTask
     }
+    
+    //
+    
+    func fetch(request: HTTPCharacterDTO.Request) async -> HTTPCharacterDTO.Response? {
+        
+        let endpoint = SearchRepository.fetch(with: request)
+        
+        guard let result: Result<HTTPCharacterDTO.Response, DataTransferError> = await dataTransferService.request(endpoint: endpoint) else { return nil }
+        
+        if case let .success(response) = result {
+            return response
+        }
+        
+        return nil
+    }
+    
+    func search(request: HTTPCharacterDTO.Request) async -> HTTPCharacterDTO.Response? {
+        
+        let endpoint = SearchRepository.search(with: request)
+        
+        guard let result: Result<HTTPCharacterDTO.Response, DataTransferError> = await dataTransferService.request(endpoint: endpoint) else { return nil }
+        
+        if case let .success(response) = result {
+            return response
+        }
+        
+        return nil
+    }
 }
 
 // MARK: - Endpoints

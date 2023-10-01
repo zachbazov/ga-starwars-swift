@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/zachbazov/URLDataTransfer.git",
       "state" : {
-        "revision" : "5cfdc0d268e68d0c3fa45210da7b2568a4cbe233",
-        "version" : "1.0.1"
+        "revision" : "40eb4a8156d9192ea0c32cbde96296e1ffb67e0a",
+        "version" : "1.0.2"
       }
     }
   ],

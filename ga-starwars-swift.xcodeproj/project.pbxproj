@@ -32,7 +32,6 @@
 		8B9E5EF32AC99453003FDC04 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5EF22AC99453003FDC04 /* CollectionViewCell.swift */; };
 		8B9E5EF52AC99545003FDC04 /* ViewInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5EF42AC99545003FDC04 /* ViewInstantiable.swift */; };
 		8B9E5EF72AC99A0B003FDC04 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5EF62AC99A0B003FDC04 /* CollectionViewLayout.swift */; };
-		8B9E5EFA2AC99C5E003FDC04 /* URLDataTransfer in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9E5EF92AC99C5E003FDC04 /* URLDataTransfer */; };
 		8B9E5EFF2AC99C9D003FDC04 /* HTTPCharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5EFE2AC99C9D003FDC04 /* HTTPCharacterDTO.swift */; };
 		8B9E5F032AC99D4A003FDC04 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F022AC99D4A003FDC04 /* CharacterDTO.swift */; };
 		8B9E5F062AC99EAD003FDC04 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F052AC99EAD003FDC04 /* Endpoint.swift */; };
@@ -56,6 +55,7 @@
 		8B9E5F322ACA04F7003FDC04 /* ViewControllerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F312ACA04F7003FDC04 /* ViewControllerObservable.swift */; };
 		8B9E5F342ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F332ACA0581003FDC04 /* ViewControllerLifecycleBehaviour.swift */; };
 		8B9E5F362ACA05CD003FDC04 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E5F352ACA05CD003FDC04 /* Searchable.swift */; };
+		8B9E5F6A2ACA2414003FDC04 /* URLDataTransfer in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9E5F692ACA2414003FDC04 /* URLDataTransfer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B9E5EFA2AC99C5E003FDC04 /* URLDataTransfer in Frameworks */,
+				8B9E5F6A2ACA2414003FDC04 /* URLDataTransfer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,7 +484,7 @@
 			);
 			name = "ga-starwars-swift";
 			packageProductDependencies = (
-				8B9E5EF92AC99C5E003FDC04 /* URLDataTransfer */,
+				8B9E5F692ACA2414003FDC04 /* URLDataTransfer */,
 			);
 			productName = "ga-starwars-swift";
 			productReference = 8B9E5E972AC986CE003FDC04 /* ga-starwars-swift.app */;
@@ -515,7 +515,7 @@
 			);
 			mainGroup = 8B9E5E8E2AC986CD003FDC04;
 			packageReferences = (
-				8B9E5EF82AC99C5E003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */,
+				8B9E5F682ACA2414003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */,
 			);
 			productRefGroup = 8B9E5E982AC986CE003FDC04 /* Products */;
 			projectDirPath = "";
@@ -805,20 +805,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B9E5EF82AC99C5E003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */ = {
+		8B9E5F682ACA2414003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zachbazov/URLDataTransfer.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1;
+				minimumVersion = 1.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B9E5EF92AC99C5E003FDC04 /* URLDataTransfer */ = {
+		8B9E5F692ACA2414003FDC04 /* URLDataTransfer */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8B9E5EF82AC99C5E003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */;
+			package = 8B9E5F682ACA2414003FDC04 /* XCRemoteSwiftPackageReference "URLDataTransfer" */;
 			productName = URLDataTransfer;
 		};
 /* End XCSwiftPackageProductDependency section */

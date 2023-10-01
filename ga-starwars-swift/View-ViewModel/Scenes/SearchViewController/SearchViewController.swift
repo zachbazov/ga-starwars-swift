@@ -150,13 +150,19 @@ extension SearchViewController: UISearchResultsUpdating {
         
         let request = HTTPCharacterDTO.Request(query: searchText)
         
-        controllerViewModel?.searchCharacters(with: request) { [weak self] response in
-            guard let self = self else { return }
-            
-            ActivityIndicatorView.remove()
-            
-            DispatchQueue.main.async {
-                self.dataSource?.dataSourceDidChange()
+        if #available(iOS 13.0, *) {
+            Task {
+                await controllerViewModel?.searchCharacters(with: request)
+            }
+        } else {
+            controllerViewModel?.searchCharacters(with: request) { [weak self] response in
+                guard let self = self else { return }
+                
+                ActivityIndicatorView.remove()
+                
+                DispatchQueue.main.async {
+                    self.dataSource?.dataSourceDidChange()
+                }
             }
         }
     }

@@ -31,17 +31,23 @@ final class SearchViewModel: CoordinatorViewModel {
     func viewDidLoad() {
         let request = HTTPCharacterDTO.Request(page: currentPage)
         
-        fetchCharacters(with: request) { [weak self] response in
-            guard let self = self,
-                  let controller = self.coordinator?.viewController
-            else { return }
-            
-            let results = response.results.map { $0.toDomain() }
-            self.characters.value = results
-            self.currentResults = results
-            self.totalPages = response.count
-            
-            controller.dataSource?.dataSourceDidChange()
+        if #available(iOS 13.0, *) {
+            Task {
+                await fetchCharacters(with: request)
+            }
+        } else {
+            fetchCharacters(with: request) { [weak self] response in
+                guard let self = self,
+                      let controller = self.coordinator?.viewController
+                else { return }
+                
+                let results = response.results.map { $0.toDomain() }
+                self.characters.value = results
+                self.currentResults = results
+                self.totalPages = response.count
+                
+                controller.dataSource?.dataSourceDidChange()
+            }
         }
     }
 }
@@ -101,6 +107,60 @@ extension SearchViewModel {
                     debugPrint(.error, "\(error)")
                 }
             })
+    }
+    
+    //
+    
+    func fetchCharacters(with request: HTTPCharacterDTO.Request) async {
+        
+        ActivityIndicatorView.present()
+        
+        isFetchingData = true
+        
+        guard let response = await useCase.request(endpoint: .fetch, request: request) else {
+            isFetchingData = false
+            
+            return
+        }
+        
+        ActivityIndicatorView.remove()
+        
+        isFetchingData = false
+        
+        let results = response.results.map { $0.toDomain() }
+        characters.value = results
+        currentResults = results
+        totalPages = response.count
+        
+        guard let controller = coordinator?.viewController else { return }
+        await controller.dataSource?.dataSourceDidChange()
+    }
+    
+    func searchCharacters(with request: HTTPCharacterDTO.Request) async {
+        
+        ActivityIndicatorView.present()
+        
+        isFetchingData = true
+        
+        guard let response = await useCase.request(endpoint: .search, request: request) else {
+            isFetchingData = false
+            
+            return
+        }
+        
+        ActivityIndicatorView.remove()
+        
+        isFetchingData = false
+        
+        let results = response.results.map { $0.toDomain() }
+        
+        characters.value = results
+        
+        guard let controller = coordinator?.viewController else { return }
+        
+        DispatchQueue.main.async {
+            controller.dataSource?.dataSourceDidChange()
+        }
     }
 }
 

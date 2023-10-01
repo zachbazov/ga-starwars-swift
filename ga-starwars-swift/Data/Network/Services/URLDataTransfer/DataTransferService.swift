@@ -8,20 +8,6 @@
 import Foundation
 import URLDataTransfer
 
-// MARK: - DataTransferRequestable Type
-
-protocol DataTransferRequestable {
-    
-    func request<T, E>(endpoint: E,
-                       completion: @escaping (Result<T, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
-    where T: Decodable,
-          E: ResponseRequestable
-    
-    func request<E>(endpoint: E,
-                    completion: @escaping (Result<Void, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
-    where E: ResponseRequestable
-}
-
 // MARK: - DataTransferService Type
 
 struct DataTransferService {
@@ -80,6 +66,21 @@ extension DataTransferService: DataTransferRequestable {
                     return completion(.failure(resolvedError))
                 }
             })
+    }
+    
+    func request<T, E>(endpoint: E) async -> Result<T, DataTransferError>? where T: Decodable {
+        
+        guard let (data, _) = await urlService.request(endpoint: endpoint as! Requestable) else { return nil }
+        
+        let result: Result<T, DataTransferError> = self.decode(data: data, decoder: URLResponseDecoder())
+        
+        if case .failure(let error) = result {
+            self.logger.log(error: error)
+            
+            return nil
+        }
+        
+        return result
     }
 }
 

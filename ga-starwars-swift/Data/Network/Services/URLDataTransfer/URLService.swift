@@ -8,19 +8,6 @@
 import Foundation
 import URLDataTransfer
 
-// MARK: - URLRequestable Type
-
-protocol URLRequestable {
-    
-    associatedtype RequestErrorType: Error
-    
-    func request(endpoint: Requestable,
-                 completion: @escaping (Result<Data?, RequestErrorType>) -> Void) -> URLSessionTaskCancellable?
-    
-    func request(request: URLRequest,
-                 completion: @escaping (Result<Data?, RequestErrorType>) -> Void) -> URLSessionTaskCancellable
-}
-
 // MARK: - URLService Type
 
 struct URLService {
@@ -69,5 +56,34 @@ extension URLService: URLRequestable {
             
             return nil
         }
+    }
+    
+    
+}
+
+
+extension URLService {
+    
+    func request(endpoint: Requestable) async -> (Data, URLResponse)? {
+        do {
+            let urlRequest = try await endpoint.urlRequest(with: configuration)
+            
+            guard let (data, response) = try await self.request(request: urlRequest) else { return nil }
+            
+            return (data, response)
+        } catch {
+            return nil
+        }
+    }
+    
+    
+    func request(request: URLRequest) async throws -> (Data, URLResponse)? {
+        logger.log(request: request)
+        
+        guard let (data, response) = try? await session.request(request) else { return nil }
+        
+        self.logger.log(responseData: data, response: response)
+        
+        return (data, response)
     }
 }

@@ -46,4 +46,15 @@ extension SearchUseCase {
             return repository.search(request: request, completion: completion)
         }
     }
+    
+    
+    func request(endpoint: Endpoints,
+                 request: HTTPCharacterDTO.Request) async -> HTTPCharacterDTO.Response? {
+        switch endpoint {
+        case .fetch:
+            return await repository.fetch(request: request)
+        case .search:
+            return await repository.search(request: request)
+        }
+    }
 }

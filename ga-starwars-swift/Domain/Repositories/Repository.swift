@@ -20,6 +20,10 @@ protocol RepositoryRequestable {
     
     func search(request: RequestType,
                 completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
+    
+    
+    func fetch(request: RequestType) async -> ResponseType?
+    func search(request: RequestType) async -> ResponseType?
 }
 
 // MARK: - Repository Type

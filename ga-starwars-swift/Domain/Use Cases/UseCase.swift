@@ -19,6 +19,8 @@ protocol UseCaseRequestable {
     func request(endpoint: EndpointType,
                  request: RequestType,
                  completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
+    
+    func request(endpoint: EndpointType, request: RequestType) async -> ResponseType?
 }
 
 // MARK: - UseCase Type
