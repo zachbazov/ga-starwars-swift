@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "codebureau",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zachbazov/CodeBureau.git",
+      "state" : {
+        "revision" : "79d14b5a3c3d0db0f0e91dbd3e4db61cd93bd956",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "urldatatransfer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zachbazov/URLDataTransfer.git",
+      "state" : {
+        "revision" : "5cfdc0d268e68d0c3fa45210da7b2568a4cbe233",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

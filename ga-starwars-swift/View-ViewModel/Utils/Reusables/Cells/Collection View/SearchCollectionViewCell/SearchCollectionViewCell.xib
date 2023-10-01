@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchCollectionViewCell" id="L8M-IK-7OC" customClass="SearchCollectionViewCell" customModule="ga_starwars_swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8zr-Wh-Pgj">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8d-N7-70z">
+                        <rect key="frame" x="16" y="14.666666666666664" width="318" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvh-Xf-ids" userLabel="Height Container">
+                        <rect key="frame" x="350" y="9" width="56" height="32"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MM7-rV-0d1">
+                                <rect key="frame" x="0.0" y="0.0" width="56" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="KZR-5V-mmC"/>
+                            <constraint firstItem="MM7-rV-0d1" firstAttribute="leading" secondItem="hvh-Xf-ids" secondAttribute="leading" id="Vh2-Rg-eYc"/>
+                            <constraint firstAttribute="height" constant="32" id="cEE-7j-hEN"/>
+                            <constraint firstAttribute="trailing" secondItem="MM7-rV-0d1" secondAttribute="trailing" id="d0R-yi-Hel"/>
+                            <constraint firstItem="MM7-rV-0d1" firstAttribute="top" secondItem="hvh-Xf-ids" secondAttribute="top" id="lML-3C-oZj"/>
+                            <constraint firstAttribute="bottom" secondItem="MM7-rV-0d1" secondAttribute="bottom" id="tgp-uq-CTr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="hvh-Xf-ids" firstAttribute="centerY" secondItem="8zr-Wh-Pgj" secondAttribute="centerY" id="6pe-VQ-0pa"/>
+                    <constraint firstAttribute="trailing" secondItem="hvh-Xf-ids" secondAttribute="trailing" constant="8" id="NwM-FM-CHt"/>
+                    <constraint firstItem="hvh-Xf-ids" firstAttribute="leading" secondItem="Q8d-N7-70z" secondAttribute="trailing" constant="16" id="VYu-jw-joO"/>
+                    <constraint firstItem="Q8d-N7-70z" firstAttribute="centerY" secondItem="8zr-Wh-Pgj" secondAttribute="centerY" id="bwo-W7-fdq"/>
+                    <constraint firstItem="Q8d-N7-70z" firstAttribute="leading" secondItem="8zr-Wh-Pgj" secondAttribute="leading" constant="16" id="zh5-uf-W60"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="heightContainer" destination="hvh-Xf-ids" id="wDD-BJ-7eO"/>
+                <outlet property="heightLabel" destination="MM7-rV-0d1" id="bJN-pR-D6P"/>
+                <outlet property="nameLabel" destination="Q8d-N7-70z" id="Vmb-oa-2Fl"/>
+            </connections>
+            <point key="canvasLocation" x="235" y="14"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
