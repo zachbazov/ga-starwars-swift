@@ -47,7 +47,7 @@ extension Observable {
 extension Observable: ObserverProtocol {
     fileprivate func notifyObservers() {
         for observer in observers {
-            mainQueueDispatch { observer.block(self.value) }
+            DispatchQueue.main.async { observer.block(self.value) }
         }
     }
     
