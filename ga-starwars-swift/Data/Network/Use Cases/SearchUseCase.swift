@@ -40,10 +40,10 @@ extension SearchUseCase {
                  completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
         switch endpoint {
-        case .fetch, .search:
-            return repository.request(endpoint: endpoint,
-                                      request: request,
-                                      completion: completion)
+        case .fetch:
+            return repository.fetch(request: request, completion: completion)
+        case .search:
+            return repository.search(request: request, completion: completion)
         }
     }
 }

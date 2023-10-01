@@ -18,31 +18,34 @@ struct SearchRepository: Repository {
 
 extension SearchRepository {
     
-    func request(endpoint: SearchUseCase.Endpoints,
-                 request: HTTPCharacterDTO.Request,
-                 completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
+    func fetch(request: HTTPCharacterDTO.Request,
+               completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
         let sessionTask = URLSessionTask()
         
         guard !sessionTask.isCancelled else { return nil }
         
-        switch endpoint {
-        case .fetch:
-            
-            let endpoint = SearchRepository.fetch(with: request)
-            
-            sessionTask.task = dataTransferService.request(
-                endpoint: endpoint,
-                completion: completion)
-            
-        case .search:
-            
-            let endpoint = SearchRepository.search(with: request)
-            
-            sessionTask.task = dataTransferService.request(
-                endpoint: endpoint,
-                completion: completion)
-        }
+        let endpoint = SearchRepository.fetch(with: request)
+        
+        sessionTask.task = dataTransferService.request(
+            endpoint: endpoint,
+            completion: completion)
+        
+        return sessionTask
+    }
+    
+    func search(request: HTTPCharacterDTO.Request,
+                completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
+        
+        let sessionTask = URLSessionTask()
+        
+        guard !sessionTask.isCancelled else { return nil }
+        
+        let endpoint = SearchRepository.search(with: request)
+        
+        sessionTask.task = dataTransferService.request(
+            endpoint: endpoint,
+            completion: completion)
         
         return sessionTask
     }
