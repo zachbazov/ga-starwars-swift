@@ -59,7 +59,6 @@ extension SearchViewModel {
         useCase.request(
             endpoint: .fetch,
             request: request,
-            cached: { _ in },
             completion: { [weak self] result in
                 guard let self = self else { return }
                 
@@ -84,7 +83,6 @@ extension SearchViewModel {
         useCase.request(
             endpoint: .search,
             request: request,
-            cached: { _ in },
             completion: { [weak self] result in
                 guard let self = self else { return }
                 

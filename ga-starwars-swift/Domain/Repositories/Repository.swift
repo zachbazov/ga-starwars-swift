@@ -13,24 +13,14 @@ import URLDataTransfer
 protocol RepositoryRequestable {
     
     associatedtype EndpointType
+    associatedtype RequestType: Decodable
     associatedtype ResponseType: Decodable
     
-    func find(request: Any?,
-              cached: ((ResponseType?) -> Void)?,
-              completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
+    func request(endpoint: EndpointType,
+                 request: RequestType,
+                 completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
 }
 
 // MARK: - Repository Type
 
 protocol Repository: RepositoryRequestable {}
-
-// MARK: - RepositoryRequestable Implementation
-
-extension Repository {
-    
-    func find(request: Any?,
-              cached: ((ResponseType?) -> Void)?,
-              completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
-        return nil
-    }
-}

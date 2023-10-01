@@ -37,14 +37,12 @@ extension SearchUseCase {
     @discardableResult
     func request(endpoint: Endpoints,
                  request: HTTPCharacterDTO.Request,
-                 cached: ((HTTPCharacterDTO.Response?) -> Void)?,
                  completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
         switch endpoint {
         case .fetch, .search:
             return repository.request(endpoint: endpoint,
                                       request: request,
-                                      cached: cached,
                                       completion: completion)
         }
     }

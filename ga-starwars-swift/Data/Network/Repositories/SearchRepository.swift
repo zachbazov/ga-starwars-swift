@@ -8,33 +8,18 @@
 import Foundation
 import URLDataTransfer
 
-// MARK: - SearchRequestable Type
-
-protocol SearchRequestable {
-    
-    associatedtype EndpointType
-    associatedtype RequestType: Decodable
-    associatedtype ResponseType: Decodable
-    
-    func request(endpoint: EndpointType,
-                 request: RequestType,
-                 cached: ((ResponseType?) -> Void)?,
-                 completion: @escaping (Result<ResponseType, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
-}
-
 // MARK: - SearchRepository Type
 
-struct SearchRepository: Repository, SearchRequestable {
+struct SearchRepository: Repository {
     var dataTransferService: DataTransferService
 }
 
-// MARK: - SearchRequestable Implementation
+// MARK: - RepositoryRequestable Implementation
 
 extension SearchRepository {
     
     func request(endpoint: SearchUseCase.Endpoints,
                  request: HTTPCharacterDTO.Request,
-                 cached: ((HTTPCharacterDTO.Response?) -> Void)?,
                  completion: @escaping (Result<HTTPCharacterDTO.Response, DataTransferError>) -> Void) -> URLSessionTaskCancellable? {
         
         let sessionTask = URLSessionTask()
